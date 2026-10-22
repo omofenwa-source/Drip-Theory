@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DRIP THEORY | No Rules. Just Drip.</title>
+
+    <style>
+        /* GENERAL STYLING */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b0b0b;
+            color: white;
+        }
+
+        section {
+            padding: 90px 8%;
+        }
+
+        /* NAVIGATION BAR */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 8%;
+            background: rgba(8, 8, 8, 0.97);
+            border-bottom: 1px solid #444;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #a8753b;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #a8753b;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .small-text {
+            color: #aaa;
+            letter-spacing: 5px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 10vw, 110px);
+            line-height: 1;
+            letter-spacing: 5px;
+        }
+
+        .hero h1 span {
+            color: #a8753b;
+        }
+
+        .hero h2 {
+            margin-top: 25px;
+            font-size: 25px;
+            color: #ccc;
+            font-weight: normal;
+        }
+
+        .hero p {
+            margin: 20px auto 35px;
+            max-width: 600px;
+            color: #999;
+            line-height: 1.8;
+        }
+
+        .main-btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: #a8753b;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .main-btn:hover {
+            transform: translateY(-4px);
+            background: #c28d4f;
+        }
+
+        /* SECTION HEADINGS */
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .section-title span {
+            color: #a8753b;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #999;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        /* ABOUT SECTION */
+        .about {
+            text-align: center;
+            background: #111;
+        }
+
+        .about-text {
+            max-width: 750px;
+            margin: auto;
+            color: #bbb;
+            line-height: 1.9;
+            font-size: 17px;
+        }
+
+        .slogan {
+            margin-top: 30px;
+            color: #a8753b;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* GALLERY SECTION */
+        .gallery {
+            text-align: center;
+            background: #0b0b0b;
+        }
+
+        .gallery h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .gallery > p {
+            color: #999;
+            margin-bottom: 40px;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .gallery-item {
+            background: #151515;
+            padding: 12px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-6px);
+            border-color: #a8753b;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .gallery-item h3 {
+            margin: 15px 0 8px;
+        }
+
+        /* SHOP SECTION */
+        .shop {
+            background: #111;
+            text-align: center;
+        }
+
+        .shop-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 45px;
+        }
+
+        .shop-item {
+            background: #1a1a1a;
+            padding: 15px;
+            border: 1px solid #333;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .shop-item:hover {
+            transform: translateY(-8px);
+            border-color: #a8753b;
+        }
+
+        .shop-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .shop-item h3 {
+            margin-top: 20px;
+            font-size: 19px;
+            letter-spacing: 1px;
+        }
+
+        .shop-item p {
+            color: #aaa;
+            margin: 12px 0;
+            line-height: 1.6;
+        }
+
+        .shop-item h4 {
+            color: #a8753b;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .shop-btn {
+            display: inline-block;
+            background: #a8753b;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .shop-btn:hover {
+            background: #c28d4f;
+        }
+
+        /* CONTACT SECTION */
+        .contact {
+            text-align: center;
+            background: #0b0b0b;
+        }
+
+        .contact p {
+            color: #aaa;
+            line-height: 1.8;
+            margin: 15px 0 25px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 25px 15px;
+            background: #111;
+            border-top: 1px solid #333;
+            color: #999;
+            line-height: 1.8;
+        }
+
+        footer span {
+            color: #a8753b;
+            font-weight: bold;
+        }
+
+        /* TABLET RESPONSIVENESS */
+        @media (max-width: 900px) {
+            nav {
+                padding: 18px 4%;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            .gallery-container,
+            .shop-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* PHONE RESPONSIVENESS */
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                gap: 18px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            nav ul li a {
+                font-size: 13px;
+            }
+
+            section {
+                padding: 65px 5%;
+            }
+
+            .section-title,
+            .gallery h2 {
+                font-size: 32px;
+            }
+
+            .hero h2 {
+                font-size: 20px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .gallery-container,
+            .shop-container {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item img {
+                height: 300px;
+            }
+
+            .shop-item img {
+                height: 320px;
+            }
+
+            .slogan {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">
+            DRIP <span>THEORY</span>
+        </div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#shop">Shop</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+
+            <div class="small-text">
+                WELCOME TO THE DRIP
+            </div>
+
+            <h1>
+                DRIP <span>THEORY</span>
+            </h1>
+
+            <h2>
+                NO RULES. JUST DRIP.
+            </h2>
+
+            <p>
+                Drip Theory is a bold fashion brand made for those who
+                love to stand out. We bring together confidence, comfort,
+                and street style to create looks that are uniquely you.
+                No rules, no limits — just pure drip.
+            </p>
+
+            <a href="#shop" class="main-btn">
+                SHOP THE DRIP
+            </a>
+
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+
+        <h2 class="section-title">
+            ABOUT <span>DRIP</span>
+        </h2>
+
+        <p class="about-text">
+            Drip Theory is a modern fashion brand created for people who
+            love to express themselves through their style. We believe
+            fashion is more than just clothes — it is confidence,
+            personality, and attitude.
+
+            Our goal is to provide stylish, comfortable, and unique
+            pieces that help you stand out wherever you go. At Drip
+            Theory, we keep it fresh, bold, and simple because your
+            style should speak for itself.
+        </p>
+
+        <div class="slogan">
+            NO RULES. JUST VIBES. 🖤
+        </div>
+
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section class="gallery" id="gallery">
+
+        <h2>
+            OUR <span style="color: #a8753b;">GALLERY</span>
+        </h2>
+
+        <p>
+            Check out some of our latest looks and styles.
+        </p>
+
+        <div class="gallery-container">
+
+            <div class="gallery-item">
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCipYBbQB1PjNCZGhs_-hZgzLmp9FK-DWEvdSzJI3_Rw&s=10"
+                    alt="Street style outfit"
+                    loading="lazy"
+                >
+                <h3>Street Style</h3>
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9Xv9wn7nuQ45-9twodkfYUB1u0ghNM50XoIDIIvIyIQ&s=10"
+                    alt="Everyday fashion outfit"
+                    loading="lazy"
+                >
+                <h3>Everyday Drip</h3>
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUaXHZjYjtBgXtfPYe3GkmVMkQPot1XTzH72v0wFKpRA&s=10"
+                    alt="Sporty fashion outfit"
+                    loading="lazy"
+                >
+                <h3>Sporty Look</h3>
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRq75o-CIVkCjN2MvfO1l6PM8rIsK-bHp-FexUsUIaXw&s=10"
+                    alt="Fresh streetwear outfit"
+                    loading="lazy"
+                >
+                <h3>Fresh Fit</h3>
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8fbfyM4gCIPva8KJCRYjYotn4FWB5KWoHboHnKAxuaA&s=10"
+                    alt="Urban fashion outfit"
+                    loading="lazy"
+                >
+                <h3>Urban Vibes</h3>
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmwEDZxbKooB7LWXUzpJ1dDDU8X_Yszdv6DPIQ-WgZQg&s=10"
+                    alt="Latest fashion collection"
+                    loading="lazy"
+                >
+                <h3>New Collection</h3>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SHOP SECTION -->
+    <section class="shop" id="shop">
+
+        <h2 class="section-title">
+            SHOP THE <span>DRIP</span>
+        </h2>
+
+        <p class="section-subtitle">
+            Find your style. Wear your confidence.
+        </p>
+
+        <div class="shop-container">
+
+            <!-- T-SHIRTS -->
+            <div class="shop-item">
+
+                <img
+                    src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=500&q=80"
+                    alt="Stylish T-shirt"
+                    loading="lazy"
+                >
+
+                <h3>T-SHIRTS</h3>
+
+                <p>
+                    Simple, fresh, and comfortable.
+                </p>
+
+                <h4>From ₦8,000</h4>
+
+                <a href="#contact" class="shop-btn">
+                    SHOP NOW
+                </a>
+
+            </div>
+
+            <!-- TROUSERS AND JEANS -->
+            <div class="shop-item">
+
+                <img
+                    src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=500&q=80"
+                    alt="Stylish jeans"
+                    loading="lazy"
+                >
+
+                <h3>TROUSERS & JEANS</h3>
+
+                <p>
+                    Baggy fits. Maximum confidence.
+                </p>
+
+                <h4>From ₦12,000</h4>
+
+                <a href="#contact" class="shop-btn">
+                    SHOP NOW
+                </a>
+
+            </div>
+
+            <!-- HOODIES -->
+            <div class="shop-item">
+
+                <img
+                    src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=500&q=80"
+                    alt="Comfortable hoodie"
+                    loading="lazy"
+                >
+
+                <h3>HOODIES</h3>
+
+                <p>
+                    Stay comfortable. Stay stylish.
+                </p>
+
+                <h4>From ₦15,000</h4>
+
+                <a href="#contact" class="shop-btn">
+                    SHOP NOW
+                </a>
+
+            </div>
+
+            <!-- SHORTS -->
+            <div class="shop-item">
+
+                <img
+                    src="https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&w=500&q=80"
+                    alt="Casual shorts"
+                    loading="lazy"
+                >
+
+                <h3>SHORTS</h3>
+
+                <p>
+                    Relaxed fits for everyday drip.
+                </p>
+
+                <h4>From ₦7,000</h4>
+
+                <a href="#contact" class="shop-btn">
+                    SHOP NOW
+                </a>
+
+            </div>
+
+            <!-- JACKETS -->
+            <div class="shop-item">
+
+                <img
+                    src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=500&q=80"
+                    alt="Fashion jacket"
+                    loading="lazy"
+                >
+
+                <h3>JACKETS</h3>
+
+                <p>
+                    Layer up. Stand out.
+                </p>
+
+                <h4>From ₦18,000</h4>
+
+                <a href="#contact" class="shop-btn">
+                    SHOP NOW
+                </a>
+
+            </div>
+
+            <!-- ACCESSORIES -->
+            <div class="shop-item">
+
+                <img
+                    src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500&q=80"
+                    alt="Fashion accessories"
+                    loading="lazy"
+                >
+
+                <h3>ACCESSORIES</h3>
+
+                <p>
+                    Complete your look with the details.
+                </p>
+
+                <h4>From ₦3,000</h4>
+
+                <a href="#contact" class="shop-btn">
+                    SHOP NOW
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact" id="contact">
+
+        <h2 class="section-title">
+            GET IN <span>TOUCH</span>
+        </h2>
+
+        <p>
+            Found something you love? Contact us to ask about our
+            clothes, available sizes, colours, and prices.
+        </p>
+
+        <!-- Replace this link with your real WhatsApp number -->
+        <a
+            href="https://wa.me/2340000000000"
+            class="main-btn"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            CONTACT US
+        </a>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            &copy; 2026 <span>DRIP THEORY</span>.
+            All rights reserved.
+        </p>
+
+        <p>
+            NO RULES. JUST DRIP.
+        </p>
+
+    </footer>
+
+</body>
+</html>
